@@ -1,0 +1,6 @@
+<h1>商品一覧</h1>
+<%= link_to "商品登録", new_admin_item_path, method: :get %>
+
+<% @items.each do |item| %>
+  <%= item.name %>
+  <%= item.

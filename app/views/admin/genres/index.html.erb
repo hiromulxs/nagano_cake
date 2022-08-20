@@ -1,0 +1,15 @@
+<h1>ジャンル管理</h1>
+<h2>ジャンル一覧</h2>
+ <tbody>
+    <tr><% @genres.each do |genre| %></tr><br>
+      <td><%= genre.name %></td>
+      <td><%= link_to "Edit", edit_admin_genre_path(genre.id)  %></td>
+      <%#= link_to "Destroy", admin_genres_path, method: :delete, data: {confirm: "このジャンルを削除しますか？"} %>
+    <% end %>
+  </tbody>
+
+<h2>ジャンル追加</h2>
+<%= form_with model: @genre, url: admin_genres_path, method: :post  do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit "追加" %>
+<% end %>

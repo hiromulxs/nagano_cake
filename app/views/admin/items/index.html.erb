@@ -2,5 +2,8 @@
 <%= link_to "商品登録", new_admin_item_path, method: :get %>
 
 <% @items.each do |item| %>
-  <%= item.name %>
-  <%= item.
+  <%= image_tag item.get_image %>
+  <%= item.name %><br>
+  <%= item.price %>（税抜）
+<% end %>
+

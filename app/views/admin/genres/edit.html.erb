@@ -1,9 +1,17 @@
-<h1>ジャンル編集</h1>
-
-<%= form_with model: @genre, url: admin_genre_path, method: :patch  do |f| %>
-  <%= f.text_field :name %>
-  <%= f.submit "変更" %>
-<% end %>
-
-
-<%#= link_to "Destroy", book_path(book), method: :delete, data: {confirm: "Are you sure？"} %>
+<p id="notice"></p>
+<div class="container px-sm-0">
+  <div id="error_explanation">
+  </div>
+  <div class="row">
+    <div class="col-md-5 bg-light text-center"><h3>ジャンル編集</h3></div>
+    <div class="col-md-9 my-4">
+      <%= form_with model: @genre, url: admin_genre_path, method: :patch  do |f| %>
+        <table class="table table-hover table-inverse">
+          <th><%= f.label :ジャンル名, class: "px-5" %></th>
+          <th><%= f.text_field :name%></th>
+          <th><%= f.submit "変更を保存", class: "mx-5 btn btn-success w-auto" %></th>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

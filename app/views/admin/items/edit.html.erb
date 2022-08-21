@@ -1,2 +1,21 @@
 <h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+  <tr><%= form_with model: @item, url: admin_item_path, method: :patch do |f| %></tr>
+
+    <h4>商品写真</h4>
+    <td><%= f.file_field :image, accept: "image/*" %></td>
+
+    <h4>ジャンル</h4>
+    <td></td>
+
+    <h4>商品名</h4>
+    <td><%= f.text_field :name %></td>
+
+    <h4>商品説明文</h4>
+    <td><%= f.text_area :introduction %></td>
+
+    <h4>商品価格（税抜）</h4>
+    <td>¥<%= f.number_field :price %></td><br>
+
+    <td><%= f.submit "登録" %></td>
+</tbody>
+<% end %>

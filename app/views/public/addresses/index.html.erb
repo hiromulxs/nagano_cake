@@ -1,0 +1,50 @@
+<p id="notice"></p>
+<div class="container px-sm-0">
+  <div id="error_explanation">
+  </div>
+  <div class="row">
+    <div class="col-md-5 bg-light text-center"><h3>配送先登録/一覧</h3></div>
+    <%= form_with model: @address, url: addresses_path, method: :post  do |f| %>
+      <div class="col-md-12 my-4">
+        <table class="table table-hover table-inverse table-borderless">
+          <thead>
+            <tr>
+              <th><%= f.label :郵便番号（ハイフンなし）, class: "px-5" %></th>
+              <th><%= f.text_field :postal_code %></th><br>
+            </tr>
+            <tr>
+              <th><%= f.label :住所, class: "px-5" %></th>
+              <th><%= f.text_field :address, size: "50" %></th><br>
+            </tr>
+            <tr>
+              <th><%= f.label :宛名, class: "px-5" %></th>
+              <th><%= f.text_field :name %></th>
+              <th><%= f.submit "新規登録" , class: "mx-5 btn btn-success w-50" %></th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    <% end %>
+    <div class="col-md-9 my-4">
+      <table class="table table-bordered">
+        <tr>
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>宛名</th>
+          <th></th>
+        </tr>
+        <% @addresses.each do |address| %>
+        <tr>
+          <th><%= address.postal_code %></th>
+          <th><%= address.address %></th>
+          <th><%= address.name %></th>
+          <th>
+            <%= link_to "編集する",edit_address_path(address.id), class: "text-light btn btn-success  mx-2" %>
+            <%= link_to "削除する",addresses_path(address.id), method: :delete, class: "text-light btn btn-danger" %>
+          </th>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

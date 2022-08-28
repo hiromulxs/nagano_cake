@@ -1,13 +1,16 @@
-
 <p id="notice"></p>
 <div class="container px-sm-0">
   <div id="error_explanation">
   </div>
   <div class="row ">
     <div class="col-md-5 bg-light text-center"><h3>登録情報編集</h3></div>
-    <%= form_with model: current_customer, url: update_customer_path, method: :patch  do |f| %>
+    <%= form_with model: @customer, url: admin_customer_path, method: :patch  do |f| %>
       <div class="col-md-12 my-4 mx-auto">
         <table class="table table-borderless">
+          <tr>
+            <th><%= f.label :会員id, class: "px-5" %></th>
+            <th><%= @customer.id %></th>
+          </tr>
           <tr>
             <th><%= f.label :名前, class: "px-5" %></th>
             <th><%= f.text_field :last_name %>　　　<%= f.text_field :first_name %></th>
@@ -31,6 +34,13 @@
           <tr>
             <th><%= f.label :メールアドレス, class: "px-5" %></th>
             <th><%= f.text_field :email %></th>
+          </tr>
+          <tr>
+            <th><%= f.label :販売ステータス, class: "px-5" %></th>
+            <th><%= f.radio_button :is_active, true %>
+                <%= f.label :is_active,"有効", value: true %>
+                <%= f.radio_button :is_active, false %>
+                <%= f.label :is_active,"退会", value: false %></th>
           </tr>
           <tr>
             <th></th>

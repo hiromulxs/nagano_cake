@@ -1,15 +1,12 @@
 class Public::CustomersController < ApplicationController
   def show
-    @customers = Customer.all
   end
 
   def edit
-    @customer = Customer.all
   end
 
   def update
-    @customer = Customer.all
-    @customer.update(customer_params)
+    current_customer.update(customer_params)
     redirect_to customers_mypage_path
   end
 

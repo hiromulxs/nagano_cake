@@ -22,11 +22,12 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
+                <div>ようこそ、<%= current_customer.last_name %>さん！</div>
                 <li>
                   <%= link_to "マイページ", customers_mypage_path, class: "nav-link text-dark btn btn-outline-secondary  mx-2" %>
                 </li>
                 <li>
-                  <%= link_to "商品一覧", customers_mypage_path, class: "nav-link text-dark btn btn-outline-secondary  mx-2" %>
+                  <%= link_to "商品一覧", items_path, class: "nav-link text-dark btn btn-outline-secondary  mx-2" %>
                 </li>
                 <li>
                   <%= link_to "カート", customers_mypage_path, class: "nav-link text-dark btn btn-outline-secondary  mx-2" %>
@@ -39,7 +40,7 @@
                   <%= link_to "商品一覧", admin_items_path, class: "nav-link text-dark btn btn-outline-secondary mx-2" %>
                 </li>
                 <li>
-                  <%= link_to "会員一覧", admin_genres_path, class: "nav-link text-dark btn btn-outline-secondary mx-2" %>
+                  <%= link_to "会員一覧", admin_customers_path, class: "nav-link text-dark btn btn-outline-secondary mx-2" %>
                 </li>
                 <li>
                   <%= link_to "注文履歴一覧", admin_genres_path, class: "nav-link text-dark btn btn-outline-secondary mx-2" %>
@@ -51,6 +52,12 @@
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-dark btn btn-outline-secondary mx-2" %>
                 </li>
               <% else %>
+                <li>
+                  <%= link_to "About", about_path, class: "nav-link text-dark btn btn-outline-secondary  mx-2" %>
+                </li>
+                <li>
+                  <%= link_to "商品一覧", items_path, class: "nav-link text-dark btn btn-outline-secondary  mx-2" %>
+                </li>
                 <li>
                   <%= link_to "新規登録", new_customer_registration_path, class: "nav-link text-dark btn btn-outline-secondary mx-2" %>
                 </li>

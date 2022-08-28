@@ -7,26 +7,26 @@
     <div class="col-md-5 pr-5 pt-3 text-right">
       <%= link_to "＋", new_admin_item_path, method: :get, class: "btn btn-primary btn-lg rounded-circle p-2" %><!--class: "btn btn-primary rounded-circle p-0"-->
     </div>
-    <div class="col-md-9 my-4 mx-auto">
-        <table class="table table-borderless ">
-          <tr>
-            <th><%#=  %>商品ID</th>
-            <th><%#=  %>商品名</th>
-            <th><%#=  %>税抜価格</th>
-            <th><%#=  %>ジャンル</th>
-            <th><%#=  %>ステータス</th>
+    <div class="col-md-9 my-4 mx-auto border-top boder-secondary">
+        <table class="table table-borderless">
+          <tr class="bg-light">
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
           </tr>
           <% @items.each do |item| %>
             <tr>
               <th><%= item.id %></th>
-              <th><%= link_to item.name, admin_item_path(item.id), class: "border-bottom" %></th>
+              <th><%= link_to item.name, admin_item_path(item.id), class: "text-dark border-bottom border-dark" %></th>
               <th><%= item.price %></th>
               <th><%= item.genre.name %></th>
               <th>
                 <% if item.is_active %>
-                  販売中
+                  <div class="text-success">販売中</div>
                 <% else %>
-                  販売停止中
+                  <div class="text-muted">販売停止中</div>
                 <% end %>
               </th>
             </tr>
@@ -35,3 +35,6 @@
     </div>
   </div>
 </div>
+
+
+<!--@user = @books.user-->

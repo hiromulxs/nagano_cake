@@ -1,0 +1,68 @@
+<p id="notice"></p>
+<div class="container px-sm-0">
+  <div id="error_explanation">
+  </div>
+  <div class="row">
+    <table class="col-md-4 my-3 bg-light text-center">
+      <tr>
+        <th>
+          <h4>
+            <%= @customer.last_name %>
+            <%= @customer.first_name %>さんの会員詳細
+          </h4>
+        </th>
+      </tr>
+    </table>
+    <div class="col-md-12 ">
+      <table class="table table-hover table-inverse table-borderless">
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <th><%= @customer.id %></th><br>
+          </tr>
+          <tr>
+            <th>氏名</th>
+            <th><%= @customer.last_name %>　<%= @customer.first_name %></th><br>
+          </tr>
+          <tr>
+            <th>カナ</th>
+            <th><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></th><br>
+          </tr>
+          <tr>
+            <th>郵便番号</th>
+            <th><%= @customer.postal_code %></th>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <th><%= @customer.address %></th>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <th><%= @customer.telephone_number %></th>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <th><%= @customer.email %></th>
+          </tr>
+          <tr>
+            <th>会員ステータス</th>
+            <th>
+              <% if @customer.is_active %>
+                <div class="text-success">有効</div>
+              <% else %>
+                <div class="text-muted">退会</div>
+              <% end %>
+            </th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>
+              <%= link_to "編集する", edit_admin_customer_path(@customer), class: "mx-5 btn btn-success w-auto" %>
+              <%= link_to "注文履歴一覧を見る",admin_customers_path, class: "mx-5 btn btn-primary w-auto" %>
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>

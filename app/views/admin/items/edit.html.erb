@@ -13,11 +13,11 @@
           </tr>
           <tr>
             <th><%= f.label :商品名, class: "px-5" %></th>
-            <th><%= f.text_field :name%></th>
+            <th><%= f.text_field :name, size: "30" %></th>
           </tr>
           <tr>
             <th><%= f.label :商品説明, class: "px-5" %></th>
-            <th><%= f.text_area :introduction %></th>
+            <th><%= f.text_area :introduction, size: "30x5" %></th>
           </tr>
           <tr>
             <th><%= f.label :ジャンル, class: "px-5" %></th>
@@ -25,7 +25,7 @@
           </tr>
           <tr>
             <th><%= f.label :税抜価格, class: "px-5" %></th>
-            <th><%= f.text_field :price %>円</th>
+            <th><%= f.text_field :price, size: "30" %>円</th>
           </tr>
           <tr>
             <th><%= f.label :販売ステータス, class: "px-5" %></th>

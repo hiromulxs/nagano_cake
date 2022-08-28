@@ -39,8 +39,8 @@
           <th><%= address.address %></th>
           <th><%= address.name %></th>
           <th>
-            <%= link_to "編集する",edit_address_path(address.id), class: "text-light btn btn-success  mx-2" %>
-            <%= link_to "削除する",addresses_path(address.id), method: :delete, class: "text-light btn btn-danger" %>
+            <%= link_to "編集する", edit_address_path(address), class: "text-light btn btn-success  mx-2" %>
+            <%= link_to "削除する", destroy_address_path(address), method: :delete, class: "text-light btn btn-danger" %>
           </th>
         </tr>
         <% end %>

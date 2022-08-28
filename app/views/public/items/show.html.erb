@@ -1,0 +1,67 @@
+<p id="notice"></p>
+<div class="container px-sm-0">
+  <div id="error_explanation">
+  </div>
+  <div class="row ">
+    <div class="col-md-5 my-3 bg-light text-center"><h3>商品詳細</h3></div>
+  </div>
+  <div class="row ">
+    <div class="col-md-4 my-4 mx-auto">
+      <%= image_tag @item.get_image, size: "300x300" %>
+    </div>
+    <div class="col-md-3 my-4 mx-auto">
+      <table class="table table-borderless ">
+          <tbody>
+            <tr>
+              <td>商品名</td>
+            </tr>
+            <tr>
+              <td>商品説明</td>
+            </tr>
+            <tr>
+              <td>ジャンル</td>
+            </tr>
+            <tr>
+              <td>税込み価格</td>
+            </tr>
+            <tr>
+              <td>販売ステータス</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="col-md-5 my-4 mx-auto">
+      <table class="table table-borderless ">
+        <tbody>
+          <tr>
+            <td><%= @item.name %></td>
+          </tr>
+          <tr>
+            <td><%= @item.introduction %></td>
+          </tr>
+          <tr>
+            <td><%= @item.genre.name %></td>
+          </tr>
+          <tr>
+            <td><%= @item.price %> 円</td>
+          </tr>
+          <tr>
+            <td>
+              <% if @item.is_active %>
+                販売中
+              <% else %>
+                販売停止中
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      <div class="col-md-12 my-4 mx-auto text-center">
+        <div>
+          <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success btn-lg w-25 mt-2" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

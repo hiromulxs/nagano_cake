@@ -2,21 +2,34 @@
 <div class="container-fluid">
   <div id="error_explanation"></div>
   <div class="row m-5">
-    <div class="col-md-2 mx-5 text-center border border-dark w-50 p-3">
-      <div class="">ジャンル検索</div>
-      <div>aa</div>
-    </div>
-    <div class="col-md-9">
-      <h2 class="">商品一覧</h2>
-      <div class="d-flex flex-wrap">
-        <% @items.each do |item| %>
-          <div class="p-2">
-            <%= image_tag item.get_image, size: "300x200" %> <br>
-            <%= link_to item.name, item_path(item.id) %> <br>
-            <%= item.price %>
-          </div>
+    <div class="col-md-2 mx-5 text-center w-50 p-3">
+      <div class="border border-dark m-4 h-75">
+        <div class="border-bottom border-dark">
+          <strong>ジャンル検索</strong>
+        </div>
+        <% @genres.each do |genre| %>
+          <table>
+            <tr>
+              <th style="padding: 10px 20px">
+                <%= genre.name %>一覧
+              </th>
+            </tr>
+          </table>
         <% end %>
       </div>
+    </div>
+    <div class="col-md-9">
+    <h2 class="">商品一覧</h2>
+    <div class="d-flex flex-wrap">
+      <% @items.each do |item| %>
+        <div class="px-2 py-3">
+          <%= link_to item_path(item.id) do %>
+            <div class="pb-2"><%= image_tag item.get_image, size: "300x200" %></div>
+          <% end %>
+          <div class="pb-2"><%= link_to item.name, item_path(item.id) %></div>
+          <div class="pb-2">¥<%= item.price.to_s(:delimited) %></div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

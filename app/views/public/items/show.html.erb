@@ -25,10 +25,30 @@
     <div class="col-md-5 my-4 mx-auto">
       <div style="font-size: 30px; padding: 10px 0;"><strong><%= @item.name %></strong></div>
       <div style="font-size: 25px; padding: 10px 0;"><%= @item.introduction %></div>
-      <div style="font-size: 30px; padding-top: 100px;">
+      <div style="font-size: 30px; padding: 100px 0 50px 0;">
         <strong>¥<%= (@item.price * 1.1).round .to_s(:delimited)%></strong>
         <span style="font-size: 15px;">（税込）</span>
       </div>
+      <table>
+        <tr>
+          <th>
+            <select class="form-control" style="width: 200px;">
+              <option>個数選択</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+          </th>
+          <th><%= link_to "編集する", customers_mypage_edit_path, class: "mx-5 btn btn-success" %></th>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

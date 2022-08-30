@@ -26,8 +26,24 @@ Rails.application.routes.draw do
     get 'items' => 'public/items#index'
     get 'item/:id' => 'public/items#show', as: 'item'
 
+    get 'cart_items' => 'public/cart_items#index'
+    post 'cart_items' => 'public/cart_items#create'
+    patch 'cart_items/:id' => 'public/cart_items#update'
+    delete 'cart_items/:id' => 'public/cart_items#destroy'
+    delete 'cart/items/destroy_all' => 'public/cart_items#destroy_all'
+    
+    get 'orders' => 'public/orders#index'
+    get 'orders' => 'public/orders#new'
+    post 'orders' => 'public/orders#create'
+    get 'orders/:id' => 'public/orders#show'
+    post 'orders/confirm' => 'public/orders#confirm'
+    get 'orders/complete' => 'public/orders#complete'
+    
 
-
+# namespace :public do
+#     get 'orders/index'
+#     get 'orders/show'
+  # end
     # resources :customers, only: [:show, :edit, :update]
 
   namespace :admin do

@@ -4,7 +4,9 @@
     <div id="error_explanation">
     </div>
     <div class="row ">
-      <div class="col-md-5 bg-light text-center"><h3>新規会員登録</h3></div>
+      <div class="col-md-3 bg-light text-center"><h3>新規会員登録</h3></div>
+    </div>
+    <div class="row ">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
         <div class="col-md-12 my-4 mx-auto">
@@ -38,7 +40,7 @@
               <th><%= f.password_field :password, autocomplete: "new-password" %></th>
             </tr>
             <tr>
-              <th><%= f.label :password_confirmation %></th>
+              <th>パスワード（確認用）</th>
               <th><%= f.password_field :password_confirmation, autocomplete: "new-password" %></th>
             </tr>
             <tr>
@@ -49,6 +51,14 @@
         </div>
       <% end %>
     </div>
+    <div class="row ">
+      <div class="col-md-3 bg-light text-center"><h3>既に登録済みの方</h3></div> 
+    </div>
+    <table class="ml-5 mt-3 ">
+      <tfoot>
+        <tr>
+          <td style="font-size: 20px;"><%= render "public/shared/links" %>　からログインしてください。</td>
+        </tr>
+      </tfoot>
+    </table>
   </div>
-
-<%= render "public/shared/links" %> <!--publicsのsを取った-->

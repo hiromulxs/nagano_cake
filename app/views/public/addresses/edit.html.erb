@@ -4,7 +4,7 @@
   </div>
   <div class="row">
     <div class="col-md-5 bg-light text-center"><h3>配送先編集</h3></div>
-    <%= form_with model: @address, url: update_address_path(@address), method: :patch do |f| %>
+    <%= form_with model: @address, url: address_path(@address), method: :patch do |f| %>
       <div class="col-md-12 my-4">
         <table class="table table-hover table-inverse table-borderless">
           <thead>

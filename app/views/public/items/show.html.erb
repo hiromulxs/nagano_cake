@@ -29,6 +29,11 @@
       <div style="font-size: 30px; padding: 100px 0 50px 0;">
         <strong>¥<%= (@item.price * 1.1).round .to_s(:delimited)%></strong>
         <span style="font-size: 15px;">（税込）</span>
+        <% if @item.is_active %>
+          <div class="text-success">販売中</div>
+        <% else %>
+          <div class="text-muted">販売停止中</div>
+        <% end %>
       </div>
       <% if @item.is_active == true %>　<!--商品販売中の場合-->
         <%= form_with(model: @cart_item,url: cart_items_path, method: :post,local: true)do |f| %>
@@ -38,8 +43,6 @@
                 <%= f.label :amount, "個数選択" %>
                 <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
                 <%= f.hidden_field :item_id, :value => @item.id %>
-                  <!--第一引数にオブジェクト名item_id、第二引数部分にvalueで受け渡す値 @item.idを指定
-                  #cartitem controllerの cart_items.find_by(item_id:に送ることができる-->
               </th>
               <th><%= f.submit "カートに入れる" %></th>
             </tr>

@@ -32,9 +32,14 @@
             <th><%= f.label :メールアドレス, class: "px-5" %></th>
             <th><%= f.text_field :email %></th>
           </tr>
+        </table>
+      </div>
+      <div class="col-md-12 my-4 mx-auto">
+        <table class="table table-borderless text-right">
           <tr>
             <th></th>
             <th><%= f.submit "編集内容を保存" , class: "btn btn-success btn-lg w-50" %></th>
+            <th><%= link_to "退会する", withdrawal_customer_path, class: "btn btn-danger btn-lg" %></th>
           </tr>
         </table>
       </div>

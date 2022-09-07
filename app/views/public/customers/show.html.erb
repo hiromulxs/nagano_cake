@@ -14,38 +14,36 @@
         </tr>
       </table>
     </div>
-    <%# @customer.each do |customer| %>
-      <div class="col-md-8 ">
-        <table class="table table-hover table-inverse table-bordered">
-          <thead>
-            <tr>
-              <th>氏名</th>
-              <th><%= current_customer.last_name %>　<%= current_customer.first_name %></th><br>
-            </tr>
-            <tr>
-              <th>カナ</th>
-              <th><%= current_customer.last_name_kana %>　<%= current_customer.first_name_kana %></th><br>
-            </tr>
-            <tr>
-              <th>郵便番号</th>
-              <th><%= current_customer.postal_code %></th>
-            </tr>
-            <tr>
-              <th>住所</th>
-              <th><%= current_customer.address %></th>
-            </tr>
-            <tr>
-              <th>電話番号</th>
-              <th><%= current_customer.telephone_number %></th>
-            </tr>
-            <tr>
-              <th>メールアドレス</th>
-              <th><%= current_customer.email %></th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-    <%# end %>
+    <div class="col-md-8 ">
+      <table class="table table-hover table-inverse table-bordered">
+        <thead>
+          <tr>
+            <th>氏名</th>
+            <th><%= current_customer.last_name %>　<%= current_customer.first_name %></th><br>
+          </tr>
+          <tr>
+            <th>カナ</th>
+            <th><%= current_customer.last_name_kana %>　<%= current_customer.first_name_kana %></th><br>
+          </tr>
+          <tr>
+            <th>郵便番号</th>
+            <th><%= current_customer.postal_code %></th>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <th><%= current_customer.address %></th>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <th><%= current_customer.telephone_number %></th>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <th><%= current_customer.email %></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-5 my-4">
@@ -56,7 +54,7 @@
         </tr>
         <tr>
           <th><h3>注文履歴</h3></th>
-          <th><%= link_to "一覧を見る",addresses_path, class: "mx-5 btn btn-primary w-75 btn-lg" %></th>
+          <th><%= link_to "一覧を見る",orders_path, class: "mx-5 btn btn-primary w-75 btn-lg" %></th>
         </tr>
       </table>
     </div>

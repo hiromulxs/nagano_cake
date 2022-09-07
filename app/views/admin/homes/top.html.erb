@@ -3,7 +3,7 @@
   <div id="error_explanation">
   </div>
   <div class="row ">
-    <div class="col-md-2 my-3 bg-light text-center"><h3>会員一覧</h3></div>
+    <div class="col-md-3 my-3 bg-light text-center"><h3>注文履歴一覧</h3></div>
   </div>
   <div class="row ">
     <div class="col-md-12 my-4 mx-auto border-top boder-secondary">
@@ -14,25 +14,25 @@
             <th>注文個数</th>
             <th>注文ステータス</th>
           </tr>
-          <%# @customers.each do |customer| %>
-            <tr>
-              <th><%#= customer.id %></th>
-              <th>
-                <%#= link_to admin_customer_path(customer.id), class: "text-dark border-bottom border-dark" do %>
-                  <%#= customer.last_name %>
-                  <%#= customer.first_name %>
-                <%# end %>
-              </th>
-              <th><%#= customer.email %></th>
-              <th>
-                <%# if customer.is_active %>
-                  <!--<div class="text-success">有効</div>-->
-                <%# else %>
-                  <!--<div class="text-muted">退会</div>-->
-                <%# end %>
-              </th>
-            </tr>
-          <%# end %>
+          <% quantity = 0 %>
+          <% @orders.each do |order| %>
+          <tr>
+            <td>
+              <%= link_to admin_order_path(order.id) do %>
+                <%= order.created_at %>
+              <% end %>
+            </td>
+            <td>
+              <%= order.customer.last_name + order.customer.first_name %>
+            <td>
+              <% order.order_items.each do |order_item| %>
+                <% quantity += order_item.quantity %>
+              <% end %>
+              <%= quantity %>
+            </td>
+            <td><%#= order.status %></td>
+          </tr>
+        <% end %>
         </table>
     </div>
   </div>

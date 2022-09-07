@@ -1,0 +1,95 @@
+<p id="notice"></p>
+<div class="container-fluid">
+  <div id="error_explanation">
+  </div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-2 mt-5 bg-light text-center">
+      <h3>注文履歴詳細</h3>
+    </div>
+    <div class="col-md-7 "></div>
+    <div class="col-md-8 mx-5 ">
+      <table class="table table-hover table-inverse table-borderless">
+        <thead>
+          <tr>
+            <th>購入者</th>
+            <td><%= @order.customer.last_name + @order.customer.first_name %></td><br>
+          </tr>
+          <tr>
+            <th>注文日</th>
+            <td><%= @order.created_at %></td><br>
+          </tr>
+          <tr>
+            <th>配送先</th>
+            <td>
+              <%= @order.shipping_postal_code + @order.shipping_address %><br>
+              <%= @order.shipping_name %>
+            </td>
+          </tr>
+          <tr>
+            <th>支払い方法</th>
+            <td><%= @order.pay_type_i18n %></td>
+          </tr>
+          <tr>
+            <th>注文ステータス</th>
+            <td>
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-7 m-5">
+      <table class="table table-bordered">
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>製造ステータス</th>
+          <th></th>
+        </tr>
+        <% total = 0 %>
+        <% @order.order_items.each do |order_item| %>
+          <tr>
+            <td>
+              <%= order_item.item.name %>
+            </td>
+            <td>
+              <%= (order_item.item.price).to_s(:delimited) %>
+            </td>
+            <td>
+              <%= order_item.quantity %>
+            </td>
+            <td>
+              <% price = ((order_item.item.price*order_item.quantity)*1.1).round .to_i %>
+              <%= price.round.to_s(:delimited) %>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <% total += price %>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-md-2 my-5">
+      <table class="table table-borderless">
+        <tr>
+          <th>商品合計</th>
+          <td><%= total %></td>
+        </tr>
+        <tr>
+          <th>送料</th>
+          <% @order.postage = 800 %>
+          <td><%= @order.postage %></td>
+        </tr>
+        <tr>
+          <th>請求金額合計</th>
+          <% @order.billing_amount = @order.postage + total %>
+          <td><%= @order.billing_amount %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<p id="notice"></p>
+<div class="container">
+  <div id="error_explanation"></div>
+  <%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>
+    <div class="row mx-5 my-1">
+      <div class="col-md-4 text-center">
+        <h3>注文情報入力</h3>
+      </div>
+      <div class="col-md-12">
+        <table style="font-size: 20px;">
+          <tr>
+            <th style="font-size: 23px;">支払い方法</th>
+          </tr>
+          <tr>
+            <td style="padding-left: 40px;">
+
+              <%= f.radio_button :pay_type, "credit_card" %>
+              <%= f.label :pay_type, Order.pay_types_i18n[:credit_card] %> <br>
+
+              <%= f.radio_button :pay_type, "transfer" %>
+              <%= f.label :pay_type, Order.pay_types_i18n[:transfer]%>
+            </td>
+          </tr>
+          <tr>
+            <th style="font-size: 23px;">お届け先</th>
+          </tr>
+          <tr>
+            <td style="padding-left: 40px;">
+              <%= f.radio_button :address_number, 0 %>
+              <%= f.label :address,"ご自身の住所" %>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-left: 70px;">
+              <%= current_customer.postal_code %>
+              <%= current_customer.address %> <br>
+              <%= current_customer.last_name %><%= current_customer.first_name %>
+            </td>
+          </tr>
+            <td style="padding-left: 40px;">
+              <%= f.radio_button :address_number, 1 %>
+              <%= f.label :address,"登録済み住所から選択" %>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-left: 70px;">
+              <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses, :id, :address_display) %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row  mx-5">
+      <div class="col-md-12">
+        <table style="font-size: 20px;">
+          <tr>
+            <td style="padding-left: 40px;">
+              <%= f.radio_button :address_number, 2 %>
+              <%= f.label :address_number_3, "新しいお届け先" %>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-left: 70px;"><%= f.label :shipping_postal_code, "郵便番号（ハイフンなし）" %></td>
+            <td><%= f.text_field :shipping_postal_code %></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 70px;"><%= f.label :shipping_address, "住所" %></td>
+            <td><%= f.text_field :shipping_address, size: "50" %></td>
+          </tr>
+          <tr>
+            <td style="padding-left: 70px;"><%= f.label :shipping_name, "宛名" %></td>
+            <td><%= f.text_field :shipping_name %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="text-center"><%= f.submit "確認画面へ進む", class: "mx-5 btn btn-primary btn-lg" %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  <% end %>
+</div>

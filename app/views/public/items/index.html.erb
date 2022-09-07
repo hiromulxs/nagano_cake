@@ -28,6 +28,11 @@
           <% end %>
           <div class="pb-2"><%= link_to item.name, item_path(item.id) %></div>
           <div class="pb-2">¥<%= item.price.to_s(:delimited) %></div>
+          <% if item.is_active %>
+            <div class="text-success">販売中</div>
+          <% else %>
+            <div class="text-muted">販売停止中</div>
+          <% end %>
         </div>
       <% end %>
     </div>

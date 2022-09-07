@@ -9,7 +9,10 @@
     <span style="margin-right: 30px;">
       <%= link_to "退会しない",customers_mypage_path, class: "btn btn-primary w-25" %>
     </span>
-    <span>
-    </span>
+    <%= form_with model: @customer, url: withdrawal_customer_path, method: :patch do |f| %>
+      <span>
+        <%= f.submit "退会する", class: "btn btn-danger w-25"  %>
+      </span>
+    <% end %>
   </div>
 </div>

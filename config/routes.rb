@@ -14,16 +14,16 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about'
     get 'customers/mypage' => 'customers#show'
     get 'customers/mypage/edit' => 'customers#edit'
+    patch 'customers/mypage/withdrawal' => 'customers#withdrawal', as: 'withdrawal_customer'
     patch 'customers/mypage' => 'customers#update', as: 'update_customer'
     get 'customers/mypage/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
-    patch 'customers/mypage' => 'customers#withdrawal', as: 'withdrawal_customer'
 
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
     resources :items, only: [:index, :show]
 
     resources :cart_items, only: [:index, :create, :update, :destroy]
-    delete 'cart/items/destroy_all' => 'public/cart_items#destroy_all'
+    delete 'cart/items/destroy_all' => 'cart_items#destroy_all'
 
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'

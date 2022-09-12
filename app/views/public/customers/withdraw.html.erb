@@ -6,13 +6,10 @@
     退会する場合は、「退会する」をクリックしてください。
   </div>
   <div style="width: 600px; margin: 0 auto;">
-    <span style="margin-right: 30px;">
-      <%= link_to "退会しない",customers_mypage_path, class: "btn btn-primary w-25" %>
-    </span>
-    <%= form_with model: @customer, url: withdrawal_customer_path, method: :patch do |f| %>
-      <span>
-        <%= f.submit "退会する", class: "btn btn-danger w-25"  %>
-      </span>
-    <% end %>
+    <%= link_to "退会しない",customers_mypage_path, class: "btn btn-primary w-25" %>
+    <%= link_to "退会する",withdrawal_customer_path, method: :patch, data: {confirm: "本当に退会しますか？？"}, class: "btn btn-danger w-25" %>
+    <%#= form_with model: @customer, url: withdrawal_customer_path, method: :patch do |f| %>
+        <%#= f.submit "退会する", class: "btn btn-danger w-25"  %>
+    <%# end %>
   </div>
 </div>

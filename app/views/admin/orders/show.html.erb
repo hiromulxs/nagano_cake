@@ -33,6 +33,21 @@
           <tr>
             <th>注文ステータス</th>
             <td>
+              <%= form_with model: @order, url: admin_order_path(@order), method: :patch do |f| %>
+                <%#= f.radio_button :status, "waiting_payment" %>
+                <%#= f.label :status, Order.statuses_i18n[:waiting_payment] %>
+                <%#= f.radio_button :status, "payment_confirmation" %>
+                <%#= f.label :status, Order.statuses_i18n[:payment_confirmation]%>
+                <%#= f.radio_button :status, "production" %>
+                <%#= f.label :status, Order.statuses_i18n[:production] %>
+                <%#= f.radio_button :status, "shipping_preparation" %>
+                <%#= f.label :status, Order.statuses_i18n[:shipping_preparation]%>
+                <%#= f.radio_button :status, "sent" %>
+                <%#= f.label :status, Order.statuses_i18n[:sent]%>
+
+                <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
+                <%= f.submit "更新", class: "mx-5 btn btn-success btn-sm" %>
+              <% end %>
             </td>
           </tr>
         </thead>
@@ -66,7 +81,12 @@
               <% price = ((order_item.item.price*order_item.quantity)*1.1).round .to_i %>
               <%= price.round.to_s(:delimited) %>
             </td>
-            <td></td>
+            <td>
+              <%= form_with model: order_item, url: admin_order_item_path(order_item), method: :patch do |f| %>
+                <%= f.select :making_status, OrderItem.making_statuses.keys.map {|k| [I18n.t("enums.order_item.making_status.#{k}"), k]} %>
+                <%= f.submit "更新", class: "mx-5 btn btn-success btn-sm" %>
+              <% end %>
+            </td>
             <td></td>
           </tr>
           <% total += price %>
@@ -77,17 +97,17 @@
       <table class="table table-borderless">
         <tr>
           <th>商品合計</th>
-          <td><%= total %></td>
+          <td><%= total.round.to_s(:delimited) %>円</td>
         </tr>
         <tr>
           <th>送料</th>
           <% @order.postage = 800 %>
-          <td><%= @order.postage %></td>
+          <td><%= @order.postage.round.to_s(:delimited) %>円</td>
         </tr>
         <tr>
           <th>請求金額合計</th>
           <% @order.billing_amount = @order.postage + total %>
-          <td><%= @order.billing_amount %></td>
+          <td><%= @order.billing_amount.round.to_s(:delimited) %>円</td>
         </tr>
       </table>
     </div>

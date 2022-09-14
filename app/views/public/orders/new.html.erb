@@ -13,10 +13,8 @@
           </tr>
           <tr>
             <td style="padding-left: 40px;">
-
               <%= f.radio_button :pay_type, "credit_card" %>
               <%= f.label :pay_type, Order.pay_types_i18n[:credit_card] %> <br>
-
               <%= f.radio_button :pay_type, "transfer" %>
               <%= f.label :pay_type, Order.pay_types_i18n[:transfer]%>
             </td>
